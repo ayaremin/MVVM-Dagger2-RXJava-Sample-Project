@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Marketplace</string>
+    <string name="label_title">Marketim</string>
+    <string name="hint_user_name">Kullanıcı Adı</string>
+    <string name="hint_password">Parola</string>
+    <string name="label_login">Giriş Yap</string>
+    <string name="label_remember_next_time">Sonraki girişimde hatırla</string>
+</resources>
