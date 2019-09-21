@@ -12,7 +12,7 @@ import com.eminayar.mymarketplace.R;
 import com.eminayar.mymarketplace.data.models.ShoppingDetail;
 import com.eminayar.mymarketplace.databinding.ListItemShoppingChildBinding;
 import com.eminayar.mymarketplace.databinding.ListItemShoppingGroupBinding;
-import com.eminayar.mymarketplace.viewmodels.ExpandableListViewModel;
+import com.eminayar.mymarketplace.viewmodels.ShoppingListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +21,12 @@ public class ShoppingListAdapter extends BaseExpandableListAdapter {
 
     private ListItemShoppingGroupBinding groupBinding;
     private ListItemShoppingChildBinding childBinding;
-    private ExpandableListViewModel viewModel;
+    private ShoppingListViewModel viewModel;
     private LifecycleOwner lifecycleOwner;
 
     private final List<ShoppingDetail> data = new ArrayList<>();
 
-    public ShoppingListAdapter(ExpandableListViewModel viewModel, LifecycleOwner lifecycleOwner) {
+    public ShoppingListAdapter(ShoppingListViewModel viewModel, LifecycleOwner lifecycleOwner) {
         this.viewModel = viewModel;
         this.lifecycleOwner = lifecycleOwner;
         viewModel.getShoppingDetails().observe(lifecycleOwner, items -> {

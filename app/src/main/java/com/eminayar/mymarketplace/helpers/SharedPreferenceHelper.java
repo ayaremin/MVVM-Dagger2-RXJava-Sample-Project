@@ -22,7 +22,12 @@ public class SharedPreferenceHelper {
     }
 
     public void putObject(String key, Object object) {
-        mEditor.putString(key,mGson.toJson(object));
+        mEditor.putString(key, mGson.toJson(object));
+        mEditor.apply();
+    }
+
+    public void removeObject(String key) {
+        mEditor.remove(key);
         mEditor.apply();
     }
 

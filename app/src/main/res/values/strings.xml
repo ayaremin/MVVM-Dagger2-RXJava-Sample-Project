@@ -6,4 +6,12 @@
     <string name="label_login">Giriş Yap</string>
     <string name="label_remember_next_time">Sonraki girişimde hatırla</string>
     <string name="label_wrong_user_name_or_password">Yanlış kullanıcı adı ya da parola</string>
+    <string name="label_my_orders">Siparişlerim</string>
+    <string name="label_logout">Çıkış Yap</string>
+    <string name="label_try_again">Yeniden Dene</string>
+    <string name="error_product_fetch">Ürünler çekilirken bir hata oluştu</string>
+    <string name="dialog_title_exit">Çıkış yap !</string>
+    <string name="dialog_message_exit_confirmation">Çıkış yapmak istediğinize emin misiniz ?</string>
+    <string name="label_yes">Evet</string>
+    <string name="label_no">Hayır</string>
 </resources>

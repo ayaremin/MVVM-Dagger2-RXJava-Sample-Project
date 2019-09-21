@@ -8,7 +8,7 @@
 
         <variable
             name="listViewModel"
-            type="com.eminayar.mymarketplace.viewmodels.ExpandableListViewModel" />
+            type="com.eminayar.mymarketplace.viewmodels.ShoppingListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Ürünler çekilirken bir hata oluştu" />
+                android:text="@string/error_product_fetch" />
 
             <Button
                 android:layout_width="200dp"
@@ -72,7 +72,7 @@
                 android:background="@drawable/bordered_red_button_background"
                 android:fontFamily="sans-serif"
                 android:onClick="@{(v) -> listViewModel.onTryAgainClicked(v)}"
-                android:text="Yeniden Dene"
+                android:text="@string/label_try_again"
                 android:textColor="@color/primaryRed" />
 
         </LinearLayout>
@@ -103,7 +103,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bordered_red_button_background"
                 android:fontFamily="sans-serif-light"
-                android:text="Siparişlerim"
+                android:text="@string/label_my_orders"
                 android:textColor="@color/primaryRed" />
 
             <Button
@@ -113,7 +113,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/red_button_background"
                 android:fontFamily="sans-serif-light"
-                android:text="Çıkış Yap"
+                android:onClick="@{(v) -> listViewModel.onExitClicked(v)}"
+                android:text="@string/label_logout"
                 android:textColor="@color/white" />
 
         </LinearLayout>

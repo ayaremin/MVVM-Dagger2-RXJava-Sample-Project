@@ -3,6 +3,9 @@ package com.eminayar.mymarketplace.data.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+
 import com.eminayar.mymarketplace.R;
 import com.google.gson.annotations.SerializedName;
 
@@ -103,16 +106,31 @@ public class ShoppingDetail implements Parcelable {
         return this.productPrice + " TRY";
     }
 
+    @ColorRes
     public int getProductStateColor() {
         switch (productState) {
             case "Yolda":
-                return R.color.primaryPurple;
+                return R.color.product_state_on_way;
             case "Hazırlanıyor":
-                return R.color.primaryRed;
+                return R.color.product_state_preparing;
             case "Onay Bekliyor":
-                return R.color.colorPrimary;
+                return R.color.product_state_waiting_approval;
             default:
                 return R.color.black;
+        }
+    }
+
+    @DrawableRes
+    public int getProductStateIndicatorBackground() {
+        switch (productState) {
+            case "Yolda":
+                return R.drawable.on_way_indicator_background;
+            case "Hazırlanıyor":
+                return R.drawable.preparing_indicator_background;
+            case "Onay Bekliyor":
+                return R.drawable.waiting_approval_indicator_background;
+            default:
+                return R.drawable.bordered_red_button_background;
         }
     }
 

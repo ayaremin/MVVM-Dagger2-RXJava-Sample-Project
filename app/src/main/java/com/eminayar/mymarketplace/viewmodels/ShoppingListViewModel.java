@@ -17,7 +17,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class ExpandableListViewModel extends ViewModel {
+public class ShoppingListViewModel extends ViewModel {
 
     private CompositeDisposable disposable;
     private ProductService productService;
@@ -25,9 +25,10 @@ public class ExpandableListViewModel extends ViewModel {
     private final MutableLiveData<List<ShoppingDetail>> shoppingDetails = new MutableLiveData<>();
     private final MutableLiveData<Boolean> error = new MutableLiveData<>();
     private final MutableLiveData<Boolean> loading = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> showExitDialog = new MutableLiveData<>();
 
     @Inject
-    public ExpandableListViewModel(ProductService productService) {
+    public ShoppingListViewModel(ProductService productService) {
         this.productService = productService;
         disposable = new CompositeDisposable();
         fetchShoppingDetailList();
@@ -41,12 +42,20 @@ public class ExpandableListViewModel extends ViewModel {
         return error;
     }
 
+    public  MutableLiveData<Boolean> getShowExitDialogEvent() {
+        return showExitDialog;
+    }
+
     public MutableLiveData<Boolean> getLoading() {
         return loading;
     }
 
     public void onTryAgainClicked (View view) {
         fetchShoppingDetailList();
+    }
+
+    public void onExitClicked (View view) {
+        showExitDialog.setValue(true);
     }
 
     private void fetchShoppingDetailList() {
