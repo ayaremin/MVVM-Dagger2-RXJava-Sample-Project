@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ShoppingItem implements Parcelable {
+public class ShoppingDetail implements Parcelable {
 
     @SerializedName("date")
     private String date;
@@ -22,7 +22,7 @@ public class ShoppingItem implements Parcelable {
     @SerializedName("productDetail")
     private ProductDetail productDetail;
 
-    protected ShoppingItem(Parcel in) {
+    protected ShoppingDetail(Parcel in) {
         date = in.readString();
         month = in.readString();
         marketName = in.readString();
@@ -32,7 +32,7 @@ public class ShoppingItem implements Parcelable {
         productDetail = in.readParcelable(ProductDetail.class.getClassLoader());
     }
 
-    public ShoppingItem() {
+    public ShoppingDetail() {
     }
 
     public String getDate() {
@@ -91,15 +91,15 @@ public class ShoppingItem implements Parcelable {
         this.productDetail = productDetail;
     }
 
-    public static final Creator<ShoppingItem> CREATOR = new Creator<ShoppingItem>() {
+    public static final Creator<ShoppingDetail> CREATOR = new Creator<ShoppingDetail>() {
         @Override
-        public ShoppingItem createFromParcel(Parcel in) {
-            return new ShoppingItem(in);
+        public ShoppingDetail createFromParcel(Parcel in) {
+            return new ShoppingDetail(in);
         }
 
         @Override
-        public ShoppingItem[] newArray(int size) {
-            return new ShoppingItem[size];
+        public ShoppingDetail[] newArray(int size) {
+            return new ShoppingDetail[size];
         }
     };
 

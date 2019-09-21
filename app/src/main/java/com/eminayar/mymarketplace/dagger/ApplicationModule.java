@@ -3,7 +3,7 @@ package com.eminayar.mymarketplace.dagger;
 import android.content.Context;
 import android.preference.PreferenceManager;
 
-import com.eminayar.mymarketplace.data.network.RepositoryService;
+import com.eminayar.mymarketplace.data.network.ProductService;
 import com.eminayar.mymarketplace.helpers.SharedPreferenceHelper;
 
 import javax.inject.Singleton;
@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 class ApplicationModule {
 
     //We may define our Base Url and can create retrofit instance in singleton app module because it will be used everywhere
-    private static final String BASE_URL = "http://kariyertechchallenge.mockable.io/";
+    private static final String BASE_URL = "https://kariyertechchallenge.mockable.io/";
 
     @Singleton
     @Provides
@@ -32,8 +32,8 @@ class ApplicationModule {
 
     @Singleton
     @Provides
-    static RepositoryService provideRetrofitService(Retrofit retrofit) {
-        return retrofit.create(RepositoryService.class);
+    static ProductService provideRetrofitService(Retrofit retrofit) {
+        return retrofit.create(ProductService.class);
     }
 
     @Singleton
