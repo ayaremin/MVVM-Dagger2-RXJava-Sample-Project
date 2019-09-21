@@ -1,6 +1,7 @@
 package com.eminayar.mymarketplace.helpers;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
@@ -14,8 +15,8 @@ public class SharedPreferenceHelper {
     private SharedPreferences.Editor mEditor;
 
     @Inject
-    public SharedPreferenceHelper(SharedPreferences mSharedPreferences) {
-        this.mSharedPreferences = mSharedPreferences;
+    public SharedPreferenceHelper(SharedPreferences sharedPreferences) {
+        this.mSharedPreferences = sharedPreferences;
         this.mEditor = mSharedPreferences.edit();
         this.mGson = new Gson();
     }

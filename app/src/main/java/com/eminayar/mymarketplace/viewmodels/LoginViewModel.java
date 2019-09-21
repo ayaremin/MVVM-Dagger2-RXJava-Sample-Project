@@ -13,7 +13,6 @@ public class LoginViewModel extends ViewModel {
 
     public MutableLiveData<String> userName = new MutableLiveData<>();
     public MutableLiveData<String> password = new MutableLiveData<>();
-    public MutableLiveData<Boolean> rememberMe = new MutableLiveData<>();
 
     private MutableLiveData<User> userMutableLiveData;
 
@@ -30,7 +29,7 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void onLoginClicked(View view) {
-        User user = new User(userName.getValue(), password.getValue(), rememberMe.getValue());
+        User user = new User(userName.getValue(), password.getValue());
         userMutableLiveData.setValue(user);
     }
 }

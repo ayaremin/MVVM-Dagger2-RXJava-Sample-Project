@@ -5,4 +5,5 @@
     <string name="hint_password">Parola</string>
     <string name="label_login">Giriş Yap</string>
     <string name="label_remember_next_time">Sonraki girişimde hatırla</string>
+    <string name="label_wrong_user_name_or_password">Yanlış kullanıcı adı ya da parola</string>
 </resources>

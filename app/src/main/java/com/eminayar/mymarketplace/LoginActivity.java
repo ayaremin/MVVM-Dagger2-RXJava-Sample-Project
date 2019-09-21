@@ -3,18 +3,17 @@ package com.eminayar.mymarketplace;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.eminayar.mymarketplace.helpers.SharedPreferenceHelper;
-import com.eminayar.mymarketplace.viewmodels.LoginViewModel;
 import com.eminayar.mymarketplace.base.BaseActivity;
 import com.eminayar.mymarketplace.dagger.util.ViewModelFactory;
 import com.eminayar.mymarketplace.data.models.User;
 import com.eminayar.mymarketplace.databinding.ActivityLoginBinding;
+import com.eminayar.mymarketplace.helpers.SharedPreferenceHelper;
+import com.eminayar.mymarketplace.viewmodels.LoginViewModel;
 
 import java.util.Objects;
 
@@ -27,12 +26,13 @@ public class LoginActivity extends BaseActivity implements MediaPlayer.OnComplet
     @Inject
     ViewModelFactory viewModelFactory;
     @Inject
-    private SharedPreferenceHelper mSharedPreferenceHelper;
+    SharedPreferenceHelper sharedPreferenceHelper;
 
     private LoginViewModel mViewModel;
     private ActivityLoginBinding mActivityBinding;
 
     private static final String KEY_USER = "keys_user";
+    private static final String KEY_REMEMBER_SELECTED = "keys_remember_selected";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,21 @@ public class LoginActivity extends BaseActivity implements MediaPlayer.OnComplet
         mActivityBinding.setLoginViewModel(mViewModel);
 
         setUI();
-
+        // Check here if user logged in successfully and remember switch works
+        checkLoginStatus();
+        // Listen changes at user model to decide if login is successful or not
         listenViewModelChanges ();
+    }
+
+    private void checkLoginStatus() {
+        User user = sharedPreferenceHelper.getObject(KEY_USER, User.class);
+        Boolean isRememberSelected = sharedPreferenceHelper.getObject(KEY_REMEMBER_SELECTED, Boolean.class);
+
+        if (user != null && isRememberSelected) {
+            // That means user already logged in once and also checked switch box for remember next time
+            startActivity(MainActivity.createIntent(this));
+        }
+        return;
     }
 
     private void setUI() {
@@ -65,14 +78,18 @@ public class LoginActivity extends BaseActivity implements MediaPlayer.OnComplet
             }
             else if (user.isUsernamePasswordCorrect()) {
                 // this means that we will make user log in to app
-                if (user.isCredentialsRemembered()) {
+                if (mActivityBinding.getRememberSelected()) {
                     // remember me checkbox checked, next time user open app we won't ask login
                     // I'm putting whole user object to shared prefs to see username in home screen
-                    mSharedPreferenceHelper.putObject(KEY_USER, user);
+                    sharedPreferenceHelper.putObject(KEY_REMEMBER_SELECTED, true);
+                } else {
+                    sharedPreferenceHelper.putObject(KEY_REMEMBER_SELECTED, false);
                 }
+                sharedPreferenceHelper.putObject(KEY_USER, user);
+                startActivity(MainActivity.createIntent(this));
 
-                //TODO start other activity
-
+            } else {
+                Toast.makeText(this, R.string.label_wrong_user_name_or_password, Toast.LENGTH_LONG ).show();
             }
         });
     }

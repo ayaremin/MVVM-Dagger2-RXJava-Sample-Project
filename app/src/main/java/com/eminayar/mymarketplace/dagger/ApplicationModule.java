@@ -1,8 +1,8 @@
 package com.eminayar.mymarketplace.dagger;
 
 import android.content.Context;
+import android.preference.PreferenceManager;
 
-import com.eminayar.mymarketplace.base.BaseApplication;
 import com.eminayar.mymarketplace.data.network.RepositoryService;
 import com.eminayar.mymarketplace.helpers.SharedPreferenceHelper;
 
@@ -15,7 +15,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Singleton
-@Module(includes = ViewModelModule.class)
+@Module(includes = {ViewModelModule.class})
 class ApplicationModule {
 
     //We may define our Base Url and can create retrofit instance in singleton app module because it will be used everywhere
@@ -38,7 +38,7 @@ class ApplicationModule {
 
     @Singleton
     @Provides
-    Context provideContext(BaseApplication application){
-        return application;
+    static SharedPreferenceHelper provideSharedPreferenceHelper(Context context) {
+        return new SharedPreferenceHelper(PreferenceManager.getDefaultSharedPreferences(context));
     }
 }

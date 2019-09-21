@@ -6,6 +6,9 @@
         <variable
             name="loginViewModel"
             type="com.eminayar.mymarketplace.viewmodels.LoginViewModel" />
+        <variable
+            name="rememberSelected"
+            type="boolean"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:checked="@={loginViewModel.rememberMe, default=false}"
+            android:checked="@={rememberSelected, default=false}"
             app:layout_constraintStart_toStartOf="@id/user_password_text_input_layout"
             app:layout_constraintTop_toBottomOf="@id/user_password_text_input_layout" />
 
