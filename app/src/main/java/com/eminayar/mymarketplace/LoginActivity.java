@@ -39,27 +39,31 @@ public class LoginActivity extends BaseActivity implements MediaPlayer.OnComplet
         super.onCreate(savedInstanceState);
         mViewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel.class);
 
+        // Check here if user logged in successfully and remember switch works
+        if (checkLoginStatus()) {
+            startActivity(MainActivity.createIntent(this));
+            return;
+        }
+
         mActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         ButterKnife.bind(this);
         mActivityBinding.setLifecycleOwner(this);
         mActivityBinding.setLoginViewModel(mViewModel);
 
         setUI();
-        // Check here if user logged in successfully and remember switch works
-        checkLoginStatus();
         // Listen changes at user model to decide if login is successful or not
         listenViewModelChanges ();
     }
 
-    private void checkLoginStatus() {
+    private boolean checkLoginStatus() {
         User user = sharedPreferenceHelper.getObject(KEY_USER, User.class);
         Boolean isRememberSelected = sharedPreferenceHelper.getObject(KEY_REMEMBER_SELECTED, Boolean.class);
 
         if (user != null && isRememberSelected) {
             // That means user already logged in once and also checked switch box for remember next time
-            startActivity(MainActivity.createIntent(this));
+            return true;
         }
-        return;
+        return false;
     }
 
     private void setUI() {

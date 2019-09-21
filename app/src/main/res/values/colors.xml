@@ -3,7 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="overlayColorForLoginScreen">#EB1736</color>
+    <color name="primaryRed">#EB1736</color>
     <color name="white">#f7f7f7</color>
     <color name="primaryPurple">#5252d4</color>
     <color name="black">#282828</color>

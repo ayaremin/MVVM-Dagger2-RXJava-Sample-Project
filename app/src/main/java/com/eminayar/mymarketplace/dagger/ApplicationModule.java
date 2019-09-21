@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 class ApplicationModule {
 
     //We may define our Base Url and can create retrofit instance in singleton app module because it will be used everywhere
-    private static final String BASE_URL = "https://api.github.com/";
+    private static final String BASE_URL = "http://kariyertechchallenge.mockable.io/";
 
     @Singleton
     @Provides
