@@ -20,8 +20,6 @@ import java.util.Objects;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-
 public class LoginActivity extends BaseActivity implements MediaPlayer.OnCompletionListener {
 
     @Inject
@@ -47,7 +45,6 @@ public class LoginActivity extends BaseActivity implements MediaPlayer.OnComplet
         }
 
         mActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        ButterKnife.bind(this);
         mActivityBinding.setLifecycleOwner(this);
         mActivityBinding.setLoginViewModel(mViewModel);
 

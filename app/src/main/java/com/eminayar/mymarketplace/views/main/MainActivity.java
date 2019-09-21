@@ -10,15 +10,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.eminayar.mymarketplace.R;
-import com.eminayar.mymarketplace.views.main.adapters.ShoppingListAdapter;
 import com.eminayar.mymarketplace.base.BaseActivity;
 import com.eminayar.mymarketplace.dagger.util.ViewModelFactory;
 import com.eminayar.mymarketplace.databinding.ActivityMainBinding;
 import com.eminayar.mymarketplace.helpers.SharedPreferenceHelper;
+import com.eminayar.mymarketplace.views.main.adapters.ShoppingListAdapter;
 
 import javax.inject.Inject;
-
-import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
 
@@ -39,7 +37,6 @@ public class MainActivity extends BaseActivity {
         mViewModel = ViewModelProviders.of(this, viewModelFactory).get(ShoppingListViewModel.class);
 
         mActivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        ButterKnife.bind(this);
         mActivityBinding.setLifecycleOwner(this);
         mActivityBinding.setListViewModel(mViewModel);
 
@@ -92,6 +89,7 @@ public class MainActivity extends BaseActivity {
                                 // Remove shared pref values to make user login next time
                                 sharedPreferenceHelper.removeObject(KEY_USER);
                                 sharedPreferenceHelper.removeObject(KEY_REMEMBER_SELECTED);
+                                finish();
                             })
                             .setNegativeButton(getString(R.string.label_no), (dialogInterface, i) -> {
                                 dialogInterface.dismiss();
