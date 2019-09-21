@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="listViewModel"
             type="com.eminayar.mymarketplace.viewmodels.ExpandableListViewModel" />
@@ -38,6 +40,7 @@
             android:id="@+id/list_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:groupIndicator="@null"
             app:layout_constraintBottom_toTopOf="@+id/button_container"
             app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
@@ -68,6 +71,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bordered_red_button_background"
                 android:fontFamily="sans-serif"
+                android:onClick="@{(v) -> listViewModel.onTryAgainClicked(v)}"
                 android:text="Yeniden Dene"
                 android:textColor="@color/primaryRed" />
 

@@ -1,5 +1,7 @@
 package com.eminayar.mymarketplace.viewmodels;
 
+import android.view.View;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -41,6 +43,10 @@ public class ExpandableListViewModel extends ViewModel {
 
     public MutableLiveData<Boolean> getLoading() {
         return loading;
+    }
+
+    public void onTryAgainClicked (View view) {
+        fetchShoppingDetailList();
     }
 
     private void fetchShoppingDetailList() {

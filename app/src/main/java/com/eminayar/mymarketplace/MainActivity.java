@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.eminayar.mymarketplace.adapters.ShoppingListAdapter;
 import com.eminayar.mymarketplace.base.BaseActivity;
 import com.eminayar.mymarketplace.dagger.util.ViewModelFactory;
 import com.eminayar.mymarketplace.databinding.ActivityMainBinding;
@@ -37,6 +38,8 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         mActivityBinding.setLifecycleOwner(this);
         mActivityBinding.setListViewModel(mViewModel);
+
+        mActivityBinding.listView.setAdapter(new ShoppingListAdapter(mViewModel, this));
 
         observableViewModel();
     }

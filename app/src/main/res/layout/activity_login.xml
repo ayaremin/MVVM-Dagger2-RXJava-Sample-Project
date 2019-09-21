@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="loginViewModel"
             type="com.eminayar.mymarketplace.viewmodels.LoginViewModel" />
+
         <variable
             name="rememberSelected"
-            type="boolean"/>
+            type="boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,8 +47,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_user_name"
-                android:textColor="@color/white"
                 android:text="@={loginViewModel.userName}"
+                android:textColor="@color/white"
                 android:textColorHint="#ccc" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -94,8 +96,8 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:background="@color/black"
-            android:text="@string/label_login"
             android:onClick="@{(v) -> loginViewModel.onLoginClicked(v)}"
+            android:text="@string/label_login"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent" />
 

@@ -3,7 +3,10 @@ package com.eminayar.mymarketplace.data.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.eminayar.mymarketplace.R;
 import com.google.gson.annotations.SerializedName;
+
+import java.text.DateFormatSymbols;
 
 public class ShoppingDetail implements Parcelable {
 
@@ -89,6 +92,28 @@ public class ShoppingDetail implements Parcelable {
 
     public void setProductDetail(ProductDetail productDetail) {
         this.productDetail = productDetail;
+    }
+
+    public String getFormattedMonth() {
+        //because months start from 0 and finish at 11 so I extract 1 from the actual month value
+        return new DateFormatSymbols().getMonths()[Integer.parseInt(month) - 1];
+    }
+
+    public String getFormattedPrice() {
+        return this.productPrice + " TRY";
+    }
+
+    public int getProductStateColor() {
+        switch (productState) {
+            case "Yolda":
+                return R.color.primaryPurple;
+            case "Hazırlanıyor":
+                return R.color.primaryRed;
+            case "Onay Bekliyor":
+                return R.color.colorPrimary;
+            default:
+                return R.color.black;
+        }
     }
 
     public static final Creator<ShoppingDetail> CREATOR = new Creator<ShoppingDetail>() {

@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class ProductDetail implements Parcelable {
 
-    @SerializedName("orderDetaşk")
+    @SerializedName("orderDetail")
     private String orderDetail;
     @SerializedName("summaryPrice")
     private float summaryPrice;
@@ -29,6 +29,10 @@ public class ProductDetail implements Parcelable {
 
     public void setSummaryPrice(float summaryPrice) {
         this.summaryPrice = summaryPrice;
+    }
+
+    public String getFormattedPrice () {
+        return this.summaryPrice + " TRY";
     }
 
     protected ProductDetail(Parcel in) {

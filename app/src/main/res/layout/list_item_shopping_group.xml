@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="androidx.core.content.ContextCompat"/>
+
+        <variable
+            name="detailItem"
+            type="com.eminayar.mymarketplace.data.models.ShoppingDetail" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/day_text_view"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@{detailItem.date}"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@{detailItem.getFormattedMonth()}"
+            android:textColor="@color/primaryPurple"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/day_text_view" />
+
+        <View
+            android:id="@+id/divider_view"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="6dp"
+            android:background="@color/divider_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/day_text_view"
+            app:layout_constraintTop_toTopOf="@id/day_text_view" />
+
+        <TextView
+            android:id="@+id/price_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@{detailItem.getFormattedPrice()}"
+            android:textColor="@color/primaryRed"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/market_name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif"
+            android:gravity="left"
+            android:text="@{detailItem.marketName}"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/price_text_view"
+            app:layout_constraintStart_toEndOf="@id/divider_view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/order_name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:gravity="left"
+            android:maxLines="1"
+            android:text="@{detailItem.orderName}"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/price_text_view"
+            app:layout_constraintStart_toEndOf="@id/divider_view"
+            app:layout_constraintTop_toBottomOf="@id/market_name_text_view" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@id/price_text_view"
+            app:layout_constraintStart_toEndOf="@id/divider_view"
+            app:layout_constraintTop_toBottomOf="@id/order_name_text_view">
+
+            <View
+                android:id="@+id/status_indicator_view"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/bordered_red_button_background" />
+
+            <TextView
+                android:id="@+id/status_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:gravity="left"
+                android:text="@{detailItem.productState}"
+                android:textColor="@{ContextCompat.getColor(context, detailItem.getProductStateColor())}"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@id/price_text_view"
+                app:layout_constraintStart_toEndOf="@id/divider_view"
+                app:layout_constraintTop_toBottomOf="@id/market_name_text_view" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
