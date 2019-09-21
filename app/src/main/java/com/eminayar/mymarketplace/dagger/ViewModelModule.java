@@ -3,8 +3,8 @@ package com.eminayar.mymarketplace.dagger;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.eminayar.mymarketplace.viewmodels.ShoppingListViewModel;
-import com.eminayar.mymarketplace.viewmodels.LoginViewModel;
+import com.eminayar.mymarketplace.views.main.ShoppingListViewModel;
+import com.eminayar.mymarketplace.views.login.LoginViewModel;
 import com.eminayar.mymarketplace.dagger.util.ViewModelFactory;
 import com.eminayar.mymarketplace.dagger.util.ViewModelKey;
 

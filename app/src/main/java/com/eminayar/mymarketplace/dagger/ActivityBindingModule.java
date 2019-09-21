@@ -1,7 +1,7 @@
 package com.eminayar.mymarketplace.dagger;
 
-import com.eminayar.mymarketplace.LoginActivity;
-import com.eminayar.mymarketplace.MainActivity;
+import com.eminayar.mymarketplace.views.login.LoginActivity;
+import com.eminayar.mymarketplace.views.main.MainActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

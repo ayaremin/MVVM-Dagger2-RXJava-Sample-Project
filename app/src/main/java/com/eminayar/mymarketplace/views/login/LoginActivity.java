@@ -1,4 +1,4 @@
-package com.eminayar.mymarketplace;
+package com.eminayar.mymarketplace.views.login;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -8,12 +8,13 @@ import android.widget.Toast;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.eminayar.mymarketplace.R;
 import com.eminayar.mymarketplace.base.BaseActivity;
 import com.eminayar.mymarketplace.dagger.util.ViewModelFactory;
 import com.eminayar.mymarketplace.data.models.User;
 import com.eminayar.mymarketplace.databinding.ActivityLoginBinding;
 import com.eminayar.mymarketplace.helpers.SharedPreferenceHelper;
-import com.eminayar.mymarketplace.viewmodels.LoginViewModel;
+import com.eminayar.mymarketplace.views.main.MainActivity;
 
 import java.util.Objects;
 
@@ -52,7 +53,7 @@ public class LoginActivity extends BaseActivity implements MediaPlayer.OnComplet
 
         setUI();
         // Listen changes at user model to decide if login is successful or not
-        listenViewModelChanges ();
+        listenViewModelChanges();
     }
 
     private boolean checkLoginStatus() {
@@ -73,14 +74,12 @@ public class LoginActivity extends BaseActivity implements MediaPlayer.OnComplet
     private void listenViewModelChanges() {
         mViewModel.getUser().observe(this, user -> {
             if (TextUtils.isEmpty(Objects.requireNonNull(user).getUserName())) {
-                mActivityBinding.userNameEditText.setError("Bir kullanıcı adı girmelisiniz");
+                mActivityBinding.userNameEditText.setError(getString(R.string.error_username_empty));
                 mActivityBinding.userNameEditText.requestFocus();
-            }
-            else if (!user.isPasswordLongEnough()) {
-                mActivityBinding.paswordEditText.setError("Parolanız 6 karakter veya daha uzun olmalıdır.");
+            } else if (!user.isPasswordLongEnough()) {
+                mActivityBinding.paswordEditText.setError(getString(R.string.error_password_length));
                 mActivityBinding.paswordEditText.requestFocus();
-            }
-            else if (user.isUsernamePasswordCorrect()) {
+            } else if (user.isUsernamePasswordCorrect()) {
                 // this means that we will make user log in to app
                 if (mActivityBinding.getRememberSelected()) {
                     // remember me checkbox checked, next time user open app we won't ask login
@@ -93,7 +92,7 @@ public class LoginActivity extends BaseActivity implements MediaPlayer.OnComplet
                 startActivity(MainActivity.createIntent(this));
 
             } else {
-                Toast.makeText(this, R.string.label_wrong_user_name_or_password, Toast.LENGTH_LONG ).show();
+                Toast.makeText(this, R.string.label_wrong_user_name_or_password, Toast.LENGTH_LONG).show();
             }
         });
     }

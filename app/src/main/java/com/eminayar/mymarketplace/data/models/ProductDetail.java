@@ -31,7 +31,7 @@ public class ProductDetail implements Parcelable {
         this.summaryPrice = summaryPrice;
     }
 
-    public String getFormattedPrice () {
+    public String getFormattedPrice() {
         return this.summaryPrice + " TRY";
     }
 

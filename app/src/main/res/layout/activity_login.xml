@@ -6,7 +6,7 @@
 
         <variable
             name="loginViewModel"
-            type="com.eminayar.mymarketplace.viewmodels.LoginViewModel" />
+            type="com.eminayar.mymarketplace.views.login.LoginViewModel" />
 
         <variable
             name="rememberSelected"

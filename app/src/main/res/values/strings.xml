@@ -14,4 +14,6 @@
     <string name="dialog_message_exit_confirmation">Çıkış yapmak istediğinize emin misiniz ?</string>
     <string name="label_yes">Evet</string>
     <string name="label_no">Hayır</string>
+    <string name="error_username_empty">Bir kullanıcı adı girmelisiniz</string>
+    <string name="error_password_length">Parolanız 6 karakter veya daha uzun olmalıdır.</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.eminayar.mymarketplace;
+package com.eminayar.mymarketplace.views.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,12 +9,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.eminayar.mymarketplace.adapters.ShoppingListAdapter;
+import com.eminayar.mymarketplace.R;
+import com.eminayar.mymarketplace.views.main.adapters.ShoppingListAdapter;
 import com.eminayar.mymarketplace.base.BaseActivity;
 import com.eminayar.mymarketplace.dagger.util.ViewModelFactory;
 import com.eminayar.mymarketplace.databinding.ActivityMainBinding;
 import com.eminayar.mymarketplace.helpers.SharedPreferenceHelper;
-import com.eminayar.mymarketplace.viewmodels.ShoppingListViewModel;
 
 import javax.inject.Inject;
 

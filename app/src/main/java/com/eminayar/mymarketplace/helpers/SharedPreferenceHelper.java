@@ -1,13 +1,14 @@
 package com.eminayar.mymarketplace.helpers;
 
 
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
+// To manage shared preferences easily in rest of the app make it modular
+// It is saving all data types as string with help of GSON and while reading it makes reverse of this
 public class SharedPreferenceHelper {
 
     private SharedPreferences mSharedPreferences;

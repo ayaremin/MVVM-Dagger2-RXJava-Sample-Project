@@ -1,4 +1,4 @@
-package com.eminayar.mymarketplace.viewmodels;
+package com.eminayar.mymarketplace.views.main;
 
 import android.view.View;
 
@@ -42,7 +42,7 @@ public class ShoppingListViewModel extends ViewModel {
         return error;
     }
 
-    public  MutableLiveData<Boolean> getShowExitDialogEvent() {
+    public MutableLiveData<Boolean> getShowExitDialogEvent() {
         return showExitDialog;
     }
 
@@ -50,11 +50,11 @@ public class ShoppingListViewModel extends ViewModel {
         return loading;
     }
 
-    public void onTryAgainClicked (View view) {
+    public void onTryAgainClicked(View view) {
         fetchShoppingDetailList();
     }
 
-    public void onExitClicked (View view) {
+    public void onExitClicked(View view) {
         showExitDialog.setValue(true);
     }
 

@@ -1,4 +1,4 @@
-package com.eminayar.mymarketplace.viewmodels;
+package com.eminayar.mymarketplace.views.login;
 
 import android.view.View;
 

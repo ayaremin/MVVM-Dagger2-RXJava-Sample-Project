@@ -1,4 +1,4 @@
-package com.eminayar.mymarketplace.adapters;
+package com.eminayar.mymarketplace.views.main.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +12,7 @@ import com.eminayar.mymarketplace.R;
 import com.eminayar.mymarketplace.data.models.ShoppingDetail;
 import com.eminayar.mymarketplace.databinding.ListItemShoppingChildBinding;
 import com.eminayar.mymarketplace.databinding.ListItemShoppingGroupBinding;
-import com.eminayar.mymarketplace.viewmodels.ShoppingListViewModel;
+import com.eminayar.mymarketplace.views.main.ShoppingListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +29,7 @@ public class ShoppingListAdapter extends BaseExpandableListAdapter {
     public ShoppingListAdapter(ShoppingListViewModel viewModel, LifecycleOwner lifecycleOwner) {
         this.viewModel = viewModel;
         this.lifecycleOwner = lifecycleOwner;
+        // Observe shopping items in view model and notify adapter about dataset changed
         viewModel.getShoppingDetails().observe(lifecycleOwner, items -> {
             data.clear();
             if (items != null) {

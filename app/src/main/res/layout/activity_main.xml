@@ -8,13 +8,13 @@
 
         <variable
             name="listViewModel"
-            type="com.eminayar.mymarketplace.viewmodels.ShoppingListViewModel" />
+            type="com.eminayar.mymarketplace.views.main.ShoppingListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".views.main.MainActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
